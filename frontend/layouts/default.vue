@@ -7,11 +7,11 @@
     >
  <Navigation />
        <v-spacer />
-      <v-switch v-model="$vuetify.theme.dark" hide-details inset label="Theme Dark"></v-switch>
+      <v-switch v-model="$vuetify.theme.dark" hide-details inset> <v-icon>home</v-icon></v-switch>
       <v-divider class="mx-4" vertical></v-divider>
-      <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">English</nuxt-link>
+      <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">En</nuxt-link>
 
-      <nuxt-link v-if="$i18n.locale !== 'es'" :to="switchLocalePath('es')">Español</nuxt-link>
+      <nuxt-link v-if="$i18n.locale !== 'es'" :to="switchLocalePath('es')">Es</nuxt-link>
     </v-app-bar>
     <v-content>
       <v-container>

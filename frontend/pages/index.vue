@@ -41,7 +41,7 @@ export default {
 .container {
   top: 60px;
   position: relative;
-  height: 110%;
+  height: 100%;
   /* border-style: dashed; */
 }
 .home_image {
