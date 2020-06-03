@@ -1,0 +1,24 @@
+projects:
+    -
+        name: p0dxd/nuxt-website
+        path: frontend
+        version: 1.0.0
+        stages:
+            build:
+                tool: node
+                framework: nuxt
+                version: latest
+            upload:
+                tool: docker
+                version: ~
+    # -
+    #     name: p0dxd/website-backend
+    #     path: back-end
+    #     version: 1.0.0
+    #     stages:
+    #         build:
+    #             tool: gradle
+    #             version: 6.2.1
+    #         upload:
+    #             tool: docker
+    #             version: ~

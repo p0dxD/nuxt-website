@@ -1,0 +1,22 @@
+{
+  "name": "main-website",
+  "version": "1.0.0",
+  "description": "Main website nuxtjs",
+  "author": "Jose Rodriguez",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.10.3",
+    "aframe": "^1.0.4",
+    "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.12.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}

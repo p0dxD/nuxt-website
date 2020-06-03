@@ -1,0 +1,44 @@
+<template>
+  <v-app dark>
+
+    <v-app-bar class="navigation"
+        absolute
+        color="white"
+    >
+ <Navigation />
+       <v-spacer />
+      <v-switch v-model="$vuetify.theme.dark" hide-details inset label="Theme Dark"></v-switch>
+      <v-divider class="mx-4" vertical></v-divider>
+      <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">English</nuxt-link>
+
+      <nuxt-link v-if="$i18n.locale !== 'es'" :to="switchLocalePath('es')">Español</nuxt-link>
+    </v-app-bar>
+    <v-content>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-content>
+
+    <v-footer
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
+</template>
+
+<script>
+import Navigation from '~/components/Navigation.vue'
+export default {
+  components: {
+    Navigation,
+  }
+}
+</script>
+
+<style>
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+    background-color: white;
+}
+
+</style>
