@@ -4,12 +4,12 @@ import path from 'path'
 
 export default {
   mode: 'universal',
-  // server: {
-  //   https: {
-  //     key: fs.readFileSync(path.resolve(__dirname, 'private.pem')),
-  //     cert: fs.readFileSync(path.resolve(__dirname, 'public.pem'))
-  //   }
-  // },
+  server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'private.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'public.pem'))
+    }
+  },
 
   /*
   ** Headers of the page
