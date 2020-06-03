@@ -8,6 +8,7 @@ export default {
       cert: fs.readFileSync(path.resolve(__dirname, 'public.pem'))
     }
   },
+  
   /*
   ** Headers of the page
   */
