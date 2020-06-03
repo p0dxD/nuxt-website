@@ -41,7 +41,7 @@ export default {
   name: "Projects",
   async asyncData({ $axios }) {
     $axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
-    const ip = await $axios.$get("http://localhost:49160/api/hello");
+    const ip = await $axios.$get("https://joserod.space:49160/api/hello");
     return {
       info: ip
     };

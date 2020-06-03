@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import fs from 'fs'
 
 export default {
   mode: 'universal',
@@ -8,7 +9,7 @@ export default {
       cert: fs.readFileSync(path.resolve(__dirname, 'public.pem'))
     }
   },
-  
+
   /*
   ** Headers of the page
   */
