@@ -105,7 +105,7 @@ export default {
         this.snackBarText = "Email service is up."
         this.snackbar = true
       } else {
-        this.snackBarText = "Email service is down. Contact me at jose0797@gmail.com"
+        this.snackBarText = "Email service is down. Contact me at jose0797:at:gmail:dot:com"
         this.snackbar = true
       }
     },
@@ -133,8 +133,23 @@ export default {
                       full_name: this.firstname + this.lastname,
                       email: this.email,
                       message: this.message
+                    }).then(response => {
+      if(response.data == "sent") {
+        this.snackBarText = "Email sent."
+        this.snackbar = true
+      } else {
+        this.snackBarText = "Email failed."
+        this.snackbar = true
+      }
                     })
-
+      // console.log(result.resolve())
+      // if(result.response == "sent") {
+      //   this.snackBarText = "Email sent."
+      //   this.snackbar = true
+      // } else {
+      //   this.snackBarText = "Email failed."
+      //   this.snackbar = true
+      // }
       console.log("Hello " + this.firstname + this.lastname + "!");
       console.log("Your email is: " + this.email);
       console.log("Your message is: " + this.message);
