@@ -77,6 +77,7 @@ export default {
   },
   async asyncData({ $axios }) {
     //get the status of server for email
+    $axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
     const status = await $axios.$get("https://joserod.space:49160/api/status").catch(function(error) {
       console.log("Error code: " +error.response.status)
     });//should return okay if good
@@ -124,6 +125,16 @@ export default {
         this.snackbar = true;
         return;
       }
+
+      // const ip = await this.$axios.$get('http://icanhazip.com')
+
+      let result =  this.$axios.post('https://joserod.space:49160/api/email', {headers: {"Authorization": "Basic dGVzdDpwYXNzd29yZA==", "Content-Type": "application/json"},
+                    data: {
+                      full_name: this.firstname + this.lastname,
+                      email: this.email,
+                      message: this.message
+                    }})
+
       console.log("Hello " + this.firstname + this.lastname + "!");
       console.log("Your email is: " + this.email);
       console.log("Your message is: " + this.message);
