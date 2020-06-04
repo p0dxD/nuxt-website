@@ -40,15 +40,16 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" md="12">
+        <v-col cols="12" md="12" class="btn-submit">
           <vue-recaptcha
             sitekey="6LeJBAAVAAAAABN19qBxLYn8IiRFsOVGxTzEZxtI"
-            :loadRecaptchaScript="true">
-            <button color="pink" text v-on:click="greet">Submit</button>
+            :loadRecaptchaScript="true"
+          >
+            <v-btn color="primary" v-on:click="greet">Submit</v-btn>
           </vue-recaptcha>
           <v-snackbar v-model="snackbar">
             {{ snackBarText }}
-            <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
+            <v-btn color="pink" :timeout="timeout" text @click="snackbar = false">Close</v-btn>
           </v-snackbar>
         </v-col>
       </v-row>
@@ -74,7 +75,12 @@ export default {
       ]
     };
   },
-  async asyncData({ app }) {
+  async asyncData({ $axios }) {
+    //get the status of server for email
+    const status = await $axios.$get("https://joserod.space:49160/api/status").catch(function(error) {
+      console.log("Error code: " +error.response.status)
+    });//should return okay if good
+
     return {
       valid: false,
       firstname: "",
@@ -83,10 +89,26 @@ export default {
       message: "",
       snackBarText: "Invalid input, please try again.",
       snackbar: false,
+      status: status,
+      timeout: 5000
     };
+  },
+  mounted:function(){
+        this.printServiceStatus() //method1 will execute at pageload
   },
   // define methods under the `methods` object
   methods: {
+    printServiceStatus: function(event) {
+      console.log(this.status)
+      if(this.status == "okay") {
+        this.snackBarText = "Email service is up."
+        this.snackbar = true
+      } else {
+        this.snackBarText = "Email service is down. Contact me at jose0797@gmail.com"
+        this.snackbar = true
+      }
+    },
+
     greet: function(event) {
       // `this` inside methods point to the Vue instance
       if (
@@ -99,7 +121,7 @@ export default {
         this.message.length <= 0 ||
         this.message == null
       ) {
-        this.snackbar = true
+        this.snackbar = true;
         return;
       }
       console.log("Hello " + this.firstname + this.lastname + "!");
@@ -112,15 +134,18 @@ export default {
 
 <style>
 .theme--dark.v-app-bar.v-toolbar.v-sheet {
-    background-color: white;
+  background-color: white;
 }
 
 /* .v-content__wrap {
   height: 100%;
 } */
 
-.grecaptcha-badge{
+.grecaptcha-badge {
   bottom: 38px !important;
 }
 
+.btn-submit {
+  padding-bottom: 30px;
+}
 </style>

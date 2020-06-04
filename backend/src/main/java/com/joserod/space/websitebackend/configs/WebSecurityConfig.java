@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("http://localhost:3000","https://joserod.space","https://joserod.space:82")
-						.allowedMethods("GET")
+						.allowedMethods("GET", "POST")
 						.allowedHeaders("*", "Access-Control-Allow-Headers", "origin", "Content-type", "accept", "x-requested-with", "x-requested-by") //What is this for?
 						.allowCredentials(true);
 			}

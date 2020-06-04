@@ -73,7 +73,6 @@ export default {
   font-size: 17px;
 }
 #personal-card {
-  z-index: 100;
     position: relative;
     top: -100px;
   /* border-style: dashed; */
