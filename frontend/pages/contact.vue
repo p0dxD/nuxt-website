@@ -127,13 +127,13 @@ export default {
       }
 
       // const ip = await this.$axios.$get('http://icanhazip.com')
-
-      let result =  this.$axios.post('https://joserod.space:49160/api/email', {headers: {"Authorization": "Basic dGVzdDpwYXNzd29yZA==", "Content-Type": "application/json"},
-                    data: {
+       this.$axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
+        this.$axios.setHeader("Content-Type", "application/json");
+      let result =  this.$axios.post('https://joserod.space:49160/api/email',{
                       full_name: this.firstname + this.lastname,
                       email: this.email,
                       message: this.message
-                    }})
+                    })
 
       console.log("Hello " + this.firstname + this.lastname + "!");
       console.log("Your email is: " + this.email);
