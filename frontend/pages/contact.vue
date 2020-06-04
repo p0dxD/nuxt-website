@@ -78,9 +78,11 @@ export default {
   async asyncData({ $axios }) {
     //get the status of server for email
     $axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
-    const status = await $axios.$get("https://joserod.space:49160/api/status").catch(function(error) {
-      console.log("Error code: " +error.response.status)
-    });//should return okay if good
+    const status = await $axios
+      .$get("https://joserod.space:49160/api/status")
+      .catch(function(error) {
+        console.log("Error code: " + error.response.status);
+      }); //should return okay if good
 
     return {
       valid: false,
@@ -94,19 +96,20 @@ export default {
       timeout: 5000
     };
   },
-  mounted:function(){
-        this.printServiceStatus() //method1 will execute at pageload
+  mounted: function() {
+    this.printServiceStatus(); //method1 will execute at pageload
   },
   // define methods under the `methods` object
   methods: {
     printServiceStatus: function(event) {
-      console.log(this.status)
-      if(this.status == "okay") {
-        this.snackBarText = "Email service is up."
-        this.snackbar = true
+      console.log(this.status);
+      if (this.status == "okay") {
+        this.snackBarText = "Email service is up.";
+        this.snackbar = true;
       } else {
-        this.snackBarText = "Email service is down. Contact me at jose0797:at:gmail:dot:com"
-        this.snackbar = true
+        this.snackBarText =
+          "Email service is down. Contact me at jose0797:at:gmail:dot:com";
+        this.snackbar = true;
       }
     },
 
@@ -127,32 +130,23 @@ export default {
       }
 
       // const ip = await this.$axios.$get('http://icanhazip.com')
-       this.$axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
-        this.$axios.setHeader("Content-Type", "application/json");
-      let result =  this.$axios.post('https://joserod.space:49160/api/email',{
-                      full_name: this.firstname + this.lastname,
-                      email: this.email,
-                      message: this.message
-                    }).then(response => {
-      if(response.data == "sent") {
-        this.snackBarText = "Email sent."
-        this.snackbar = true
-      } else {
-        this.snackBarText = "Email failed."
-        this.snackbar = true
-      }
-                    })
-      // console.log(result.resolve())
-      // if(result.response == "sent") {
-      //   this.snackBarText = "Email sent."
-      //   this.snackbar = true
-      // } else {
-      //   this.snackBarText = "Email failed."
-      //   this.snackbar = true
-      // }
-      console.log("Hello " + this.firstname + this.lastname + "!");
-      console.log("Your email is: " + this.email);
-      console.log("Your message is: " + this.message);
+      this.$axios.setHeader("Authorization", "Basic dGVzdDpwYXNzd29yZA==");
+      this.$axios.setHeader("Content-Type", "application/json");
+      let result = this.$axios
+        .post("https://joserod.space:49160/api/email", {
+          full_name: this.firstname + this.lastname,
+          email: this.email,
+          message: this.message
+        })
+        .then(response => {
+          if (response.data == "sent") {
+            this.snackBarText = "Email sent.";
+            this.snackbar = true;
+          } else {
+            this.snackBarText = "Email failed.";
+            this.snackbar = true;
+          }
+        });
     }
   }
 };
