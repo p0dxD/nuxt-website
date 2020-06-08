@@ -42,7 +42,8 @@ export default {
     {
       src: '~/plugins/vue-apexcharts',
       ssr: false
-    }
+    },
+    '~/plugins/i18n.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -57,8 +58,20 @@ export default {
     [
       'nuxt-i18n',
       {
-        useCookie: false,
-        alwaysRedirect: true,
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'lang',
+          alwaysRedirect: true,
+          fallbackLocale: 'en'
+        },
+        vuex: {
+          moduleName: 'i18n',
+          mutations: {
+            setLocale: 'I18N_SET_LOCALE',
+            setMessages: false
+          },
+          preserveState: false
+        },
         locales: [
           {
             code: 'en',
@@ -71,13 +84,26 @@ export default {
             iso: 'es-ES',
             name: 'Español',
             file: 'es/index.js'
+          },
+          {
+            code: '中文',
+            iso: 'zh-CN',
+            name: 'Simplified-Chinese',
+            file: 'ch/index.js'
           }
         ],
         lazy: true,
         seo: false,
         langDir: '/locales/',
         defaultLocale: 'en',
-        parsePages: false
+        parsePages: false,
+        onLanguageSwitched: (previous, current) => {
+          if (process.client) {
+            const DATE = new Date();
+            DATE.setTime(DATE.getTime() + 365 * 24 * 3600 * 1000);
+            document.cookie = 'lang=' + current + '; path=/; expires=' + DATE.toUTCString();
+          }
+        }
       }
     ],
     '@nuxtjs/axios',

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <nuxt-link to="/" exact>Home</nuxt-link>
-    <nuxt-link to="/projects">Projects</nuxt-link>
-    <nuxt-link to="/contact">Contact</nuxt-link>
-    <a href="https://joserod.space:81">Blog</a>
+    <nuxt-link class="menu-bar" :to="localePath('/')" exact>{{ $t('home_title_text') }}</nuxt-link>
+    <nuxt-link class="menu-bar" :to="localePath('/projects')">{{ $t('projects_title_text') }}</nuxt-link>
+    <nuxt-link class="menu-bar" :to="localePath('/contact')">{{ $t('contact_title_text') }}</nuxt-link>
+    <a class="menu-bar" href="https://joserod.space:81">Blog</a>
   </div>
 </template>
 
 <style scoped>
-a {
+.menu-bar {
   margin-right: 20px;
   font-size: 14px;
   color: #999;
@@ -23,10 +23,10 @@ a {
   line-height: normal;
   cursor: pointer;
 }
-a:hover {
+.menu-bar:hover {
   color: #333;
 }
-a.nuxt-link-active {
+.menu-bar.nuxt-link-active {
   color: #333;
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;

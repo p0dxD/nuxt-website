@@ -3,20 +3,12 @@
     <v-row>
       <v-col cols="12" md="12">
         <v-flex class="text-center">
-          <p>
-            My name is Jose and I graduated from Stony Brook University with a B.S. in Computer science and a minor in Spanish language and literature.
-            My Work includes developing tools for automation and testing that make the end to end flow seamless and easy on the developer. 
-            Prior to that I worked developing and contributing to android applications.
-            I enjoy learning about operating systems and low level programming and hope to obtain my masters in the near future on systems.
-            Current project being worked on is an android application that will facilitate the way we pick what to eat throughout the day.
-            Hobbies include working on personal projects involving Android, Java based applications as well as web projects.
-            In my free time I enjoy running and exploring different towns/areas in hopes of finding new great food.
-          </p>
+          <p>{{ $t('about_me_context_text') }}</p>
         </v-flex>
       </v-col>
       <v-col cols="12" md="12">
         <v-flex class="text-center">
-          <h1 class="titles">Skills</h1>
+          <h1 class="titles">{{ $t('skills_title_text') }}</h1>
         </v-flex>
       </v-col>
       <v-col cols="12" md="6">
@@ -25,11 +17,9 @@
         </client-only>
       </v-col>
       <v-col cols="12" md="6">
-        <v-flex class="text-center" >
-          <h1 class="subtitles">Languages</h1>
-          <div class="content-skills">
-          I know both English and spanish. Even tho I get to work mostly with English. I would like to eventually get to use both in the workplace.
-          </div>
+        <v-flex class="text-center">
+          <h1 class="subtitles">{{ $t('languages_title_text') }}</h1>
+          <div class="content-skills">{{ $t('languages_context_text') }}</div>
         </v-flex>
       </v-col>
     </v-row>
@@ -65,11 +55,11 @@ export default {
     return {
       series: [
         {
-          name: "English",
+          name: this.$i18n.t('english_table_text'),
           data: [100, 95, 95]
         },
         {
-          name: "Spanish",
+          name: this.$i18n.t('spanish_table_text'),
           data: [100, 90, 95]
         }
       ],
@@ -77,19 +67,19 @@ export default {
         chart: {
           height: 350,
           type: "bar",
-    animations: {
-        enabled: true,
-        easing: 'easeinout',
-        speed: 800,
-        animateGradually: {
+          animations: {
             enabled: true,
-            delay: 150
-        },
-        dynamicAnimation: {
-            enabled: true,
-            speed: 350
-        }
-    }
+            easing: "easeinout",
+            speed: 800,
+            animateGradually: {
+              enabled: true,
+              delay: 150
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 350
+            }
+          }
         },
         plotOptions: {
           bar: {
@@ -107,11 +97,11 @@ export default {
           colors: ["transparent"]
         },
         xaxis: {
-          categories: ["Speaking", "Writing", "Reading"]
+          categories: [this.$i18n.t('speaking_table_text'), this.$i18n.t('writing_table_text'), this.$i18n.t('reading_table_text')]
         },
         yaxis: {
           title: {
-            text: "% (percentage)"
+            text: "% ("+this.$i18n.t('percentage_table_text')+")"
           }
         },
         fill: {
@@ -149,11 +139,11 @@ export default {
   line-height: 32px;
 }
 .content-skills {
-        display: table-cell;
-        width: 100%;
-        height: 300px;
-        padding: 10px;
-        /* border: 3px dashed #1c87c9; */
-        vertical-align: middle;
+  display: table-cell;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  /* border: 3px dashed #1c87c9; */
+  vertical-align: middle;
 }
 </style>

@@ -12,7 +12,7 @@
         <v-col cols="5" sm="4">
           <div id="personal-card">
             <span class="dot"></span>
-            <h4 class="name-title">Software Engineer</h4>
+            <h4 class="name-title">{{ $t('me_job_title_text') }}</h4>
           </div>
         </v-col>
       </v-row>

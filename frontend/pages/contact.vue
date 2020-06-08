@@ -62,6 +62,12 @@ import VueRecaptcha from "vue-recaptcha";
 export default {
   name: "Contact",
   components: { VueRecaptcha },
+    nuxtI18n: {
+    paths: {
+      es: '/contactar',
+      en: '/contact'
+    }
+  },
   data() {
     return {
       name: "test",
