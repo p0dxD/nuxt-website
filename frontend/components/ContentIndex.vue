@@ -89,8 +89,14 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
+         legend: {
+      show: true,
+            markers: {
+          fillColors: ["#96ceb4", "#ffeead"],
+            }
+         },
         stroke: {
           show: true,
           width: 2,
