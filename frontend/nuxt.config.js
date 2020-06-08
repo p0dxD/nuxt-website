@@ -86,7 +86,7 @@ export default {
             file: 'es/index.js'
           },
           {
-            code: '中文',
+            code: 'ch',
             iso: 'zh-CN',
             name: 'Simplified-Chinese',
             file: 'ch/index.js'
