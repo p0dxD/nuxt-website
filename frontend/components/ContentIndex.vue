@@ -7,6 +7,9 @@
         </v-flex>
       </v-col>
       <v-col cols="12" md="12">
+        <v-divider></v-divider>
+      </v-col>
+      <v-col cols="12" md="12">
         <v-flex class="text-center">
           <h1 class="titles">{{ $t('skills_title_text') }}</h1>
         </v-flex>
@@ -22,6 +25,20 @@
           <div class="content-skills">{{ $t('languages_context_text') }}</div>
         </v-flex>
       </v-col>
+      <v-col cols="12" md="12">
+        <v-divider></v-divider>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-flex class="text-center">
+          <h1 class="subtitles">{{ $t('programming_languages_title_text') }}</h1>
+          <div class="content-skills">{{ $t('programming_languages_context_text') }}</div>
+        </v-flex>
+      </v-col>
+      <v-col cols="12" md="6">
+        <client-only>
+          <apexchart type="bar" height="350" :options="chartOptionsSkills" :series="seriesSkills" />
+        </client-only>
+      </v-col>
     </v-row>
   </v-layout>
 </template>
@@ -29,37 +46,15 @@
 <script>
 export default {
   name: "Content",
-  // async asyncData({ app }) {
-  //   var options = {
-  //     chart: {
-  //       id: "vuechart-example"
-  //     },
-  //     xaxis: {
-  //       categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-  //     }
-  //   };
-
-  //   var series = [
-  //     {
-  //       name: "series-1",
-  //       data: [30, 40, 45, 50, 49, 60, 70, 91]
-  //     }
-  //   ];
-
-  //   return {
-  //     options: options,
-  //     series: series
-  //   };
-  // }
   data() {
     return {
       series: [
         {
-          name: this.$i18n.t('english_table_text'),
+          name: this.$i18n.t("english_table_text"),
           data: [100, 95, 95]
         },
         {
-          name: this.$i18n.t('spanish_table_text'),
+          name: this.$i18n.t("spanish_table_text"),
           data: [100, 90, 95]
         }
       ],
@@ -89,25 +84,29 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false,
+          enabled: false
         },
-         legend: {
-      show: true,
-            markers: {
-          fillColors: ["#96ceb4", "#ffeead"],
-            }
-         },
+        legend: {
+          show: true,
+          markers: {
+            fillColors: ["#96ceb4", "#ffeead"]
+          }
+        },
         stroke: {
           show: true,
           width: 2,
           colors: ["transparent"]
         },
         xaxis: {
-          categories: [this.$i18n.t('speaking_table_text'), this.$i18n.t('writing_table_text'), this.$i18n.t('reading_table_text')]
+          categories: [
+            this.$i18n.t("speaking_table_text"),
+            this.$i18n.t("writing_table_text"),
+            this.$i18n.t("reading_table_text")
+          ]
         },
         yaxis: {
           title: {
-            text: "% ("+this.$i18n.t('percentage_table_text')+")"
+            text: "% (" + this.$i18n.t("percentage_table_text") + ")"
           }
         },
         fill: {
@@ -118,6 +117,112 @@ export default {
           y: {
             formatter: function(val) {
               return val + "%";
+            }
+          }
+        }
+      },
+      seriesSkills: [
+        {
+          data: [80, 60, 50, 50, 45, 40, 20, 15, 10]
+        }
+      ],
+      chartOptionsSkills: {
+        chart: {
+          type: "bar",
+          height: 350,
+          animations: {
+            enabled: true,
+            easing: "easeinout",
+            speed: 800,
+            animateGradually: {
+              enabled: true,
+              delay: 150
+            },
+            dynamicAnimation: {
+              enabled: true,
+              speed: 350
+            }
+          }
+        },
+        plotOptions: {
+          bar: {
+            barHeight: "100%",
+            distributed: true,
+            horizontal: true,
+            dataLabels: {
+              position: "bottom"
+            }
+          }
+        },
+        colors: [
+          "#726a95",
+          "#709fb0",
+          "#a0c1b8",
+          "#f4ebc1",
+          "#efee9d",
+          "#d1eaa3",
+          "#dbc6eb",
+          "#abc2e8",
+          "#69d2e7"
+        ],
+        dataLabels: {
+          enabled: true,
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"]
+          },
+          formatter: function(val, opt) {
+            return val;
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
+        },
+        stroke: {
+          width: 1,
+          colors: ["#fff"]
+        },
+        xaxis: {
+          categories: [
+            "Java",
+            "Groovy",
+            "Python",
+            "Shell scripting",
+            "C",
+            "Javascript",
+            "SML",
+            "Prolog",
+            "Rust"
+          ],
+          labels: {
+            show: false
+          }
+        },
+        yaxis: {
+          labels: {
+            show: true
+          }
+        },
+        // title: {
+        //   text: "Custom DataLabels",
+        //   align: "center",
+        //   floating: true
+        // },
+        // subtitle: {
+        //   text: "Category Names as DataLabels inside bars",
+        //   align: "center"
+        // },
+        tooltip: {
+          theme: "dark",
+          x: {
+            show: false
+          },
+          y: {
+            title: {
+              formatter: function() {
+                return "";
+              }
             }
           }
         }

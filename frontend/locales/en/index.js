@@ -12,5 +12,7 @@ export default {
     about_me_context_text: 'My name is Jose and I graduated from Stony Brook University with a B.S. in Computer science and a minor in Spanish language and literature. My Work includes developing tools for automation and testing that make the end to end flow seamless and easy on the developer. Prior to that I worked developing and contributing to android applications. I enjoy learning about operating systems and low level programming and hope to obtain my masters in the near future on systems. In my free time I enjoy running and exploring different towns/areas in hopes of finding new great food.',
     percentage_table_text: 'Percentage',
     english_table_text: 'English',
-    spanish_table_text: 'Spanish'
+    spanish_table_text: 'Spanish',
+    programming_languages_title_text: 'Programming languages',
+    programming_languages_context_text: 'These are the programming languages I am most confortable with, starting with most to less used. These are a rough estimate as I pick and use whatever language I like based on programming needs, time and performance.'
   }
