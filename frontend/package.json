@@ -14,7 +14,7 @@
     "@nuxtjs/axios": "^5.10.3",
     "aframe": "^1.0.4",
     "apexcharts": "^3.24.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.12.2",
     "vue-apexcharts": "^1.5.3",
     "vue-cookie": "^1.1.4",
